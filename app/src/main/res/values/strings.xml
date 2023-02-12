@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Task 2</string>
+    <string name="app_name">TruthTable</string>
+    <string name="title">Conjunction Table(AND)</string>
+    <string name="next">-> Next</string>
+    <string name="btn_true">True</string>
+    <string name="btn_false">False</string>
+
+    <string name="correct">Correct anwser!</string>
+    <string name="incorrect">Sorry, Thats wrong</string>
+
+    <string name="first">A</string>
+    <string name="second">B</string>
+    <string name="and">A&amp;B</string>
+
 </resources>
