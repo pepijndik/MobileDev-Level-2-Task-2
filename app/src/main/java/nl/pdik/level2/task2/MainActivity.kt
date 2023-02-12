@@ -65,23 +65,32 @@ fun ScreenContent(modifier: Modifier, context: Context, equation: MutableState<E
         ScreenTitle()
         Column() {
             EquationHeaders()
-            AnswerButtons(
-                checkEquation = {
-                        check: Boolean ->
-                    if(check && equation.value.firstArg == "T" && equation.value.secondArg == "T" && equation.value.anwser =="T"){
-                        equation.value = Equation("✅","✅","✅")
-                        informUser(context = context, R.string.correct)
-                    }else{
-                        informUser(context = context, R.string.incorrect)
+            EquationValues(equation.value)
+            if(!equation.value.anwser.contains("?") && !equation.value.anwser.contains("✅")){
+                AnswerButtons(
+                    checkEquation = {
+                            check: Boolean ->
+
+                        if(checkConjunctionTable(equation.value,check)){
+                            equation.value = Equation("✅","✅","✅")
+                            informUser(context = context, R.string.correct)
+                        }else{
+                            informUser(context = context, R.string.incorrect)
+                        }
                     }
-                }
-            )
-            if(!equation.value.anwser.contains("?",) || !equation.value.anwser.contains("✅")){
-                EquationValues(equation.value)
+                )
             }
         }
 
     }
+}
+
+private fun checkConjunctionTable(equation: Equation, d: Boolean): Boolean {
+    val a = equation.firstArg.contains("T");
+    val b = equation.secondArg.contains("T");
+    val c = equation.anwser.contains("T");
+
+    return (a && b && c) == d
 }
 @Composable
 fun ScreenTitle() {
