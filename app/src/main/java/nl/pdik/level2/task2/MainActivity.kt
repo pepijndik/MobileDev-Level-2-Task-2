@@ -1,6 +1,7 @@
 package nl.pdik.level2.task2
 
 import android.content.Context
+import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -10,6 +11,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,7 +55,8 @@ fun Task2(){
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { stringResource(id = R.string.next) },
+                text = { Text(text = stringResource(id = R.string.next)) },
+                icon = {Icon(Icons.Filled.ArrowForward, stringResource(id = R.string.next))},
                 onClick = {  equation.value = generateEquation()})
         }
         ,
@@ -114,9 +119,9 @@ fun EquationHeaders(){
          modifier = Modifier.fillMaxWidth(),
          Arrangement.SpaceAround,
     ) {
-        Text(text = stringResource(id = R.string.first),fontWeight = FontWeight.Bold,)
-        Text(text = stringResource(id = R.string.second),fontWeight = FontWeight.Bold,)
-        Text(text = stringResource(id = R.string.and), fontWeight = FontWeight.Bold,)
+        Text(text = stringResource(id = R.string.first),    modifier = Modifier.weight(1f),)
+        Text(text = stringResource(id = R.string.second),    modifier = Modifier.weight(1f),)
+        Text(text = stringResource(id = R.string.and),     modifier = Modifier.weight(1f),)
     }
 
 }
@@ -127,9 +132,9 @@ fun EquationValues(equation: Equation){
         modifier = Modifier.fillMaxWidth(),
         Arrangement.SpaceAround,
     ) {
-        Text(text = equation.firstArg,fontWeight = FontWeight.Bold,)
-        Text(text = equation.secondArg,fontWeight = FontWeight.Bold,)
-        Text(text = equation.anwser, fontWeight = FontWeight.Bold,)
+        Text(text = equation.firstArg,fontWeight = FontWeight.Bold,     modifier = Modifier.weight(1f),)
+        Text(text = equation.secondArg,fontWeight = FontWeight.Bold,    modifier = Modifier.weight(1f),)
+        Text(text = equation.anwser, fontWeight = FontWeight.Bold,     modifier = Modifier.weight(1f),)
     }
 }
 private fun informUser(context: Context, msgId: Int) {
